@@ -1,0 +1,12 @@
+# Python 3.10-3.13. Versions match the original course environment.
+numpy==2.2.6
+pandas==2.3.0
+scikit-learn==1.7.0
+matplotlib==3.10.3
+joblib==1.5.1
+rdkit==2025.3.1
+
+# Notebooks and tests
+ipykernel>=6.29
+nbconvert>=7.16
+pytest>=8.0

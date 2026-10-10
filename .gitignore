@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Tests
+.pytest_cache/
+.coverage
+
+# Secrets
+.env
+.env.*
+
+# Data: downloaded, course-provided or generated; never committed (see data/README.md)
+data/*
+!data/README.md
+*.csv
+*.data
+*.xlsx
+
+# Trained models (retrain with the notebooks; the originals were 26 MB and 64 MB)
+models/*
+!models/README.md
+*.pkl
+*.joblib
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
