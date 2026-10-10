@@ -88,4 +88,12 @@ Or open the notebooks in Jupyter or VS Code and run them in order. Notebooks 01,
 
 ## My contribution
 
-[PLACEHOLDER: describe your approach, decisions and what you learned]
+This was an individual project, so everything here is my own work. I followed a CRISP-DM approach:
+
+- **Data engineering:** I wrote a parser for the raw HOPV-15 file, which stores each molecule as a block of SMILES, InChI, experimental values and 3D conformers rather than as a table. I found that missing values were stored as the string `"nan"`, handled duplicate molecules, and built a descriptor table of all 217 RDKit descriptors. I then pulled 232 extra labelled molecules from the course's PostgreSQL database and combined both sources, growing the stability training set to 534 molecules.
+- **Modelling:** for stability classification I compared Random Forest and ExtraTrees. ExtraTrees improved cross-validated F1 macro by about 0.08, and I added balanced class weights for the under-represented "low" class. For HOMO/LUMO I trained separate models per target, because LUMO turned out to be much harder to predict. I then blended ExtraTrees with an average of five MLPs trained with different seeds, which brought the competition MAE down from about 0.13 to 0.112 eV.
+- **Analysis:** I used K-means clustering and PCA to compare the training sources with the competition test set. This showed that the test molecules resemble the course-database molecules far more than the public HOPV set.
+- **What I learned:**
+  - Validation strategy matters as much as the model: for stability, cross-validated F1 (0.88) was clearly more optimistic than the private leaderboard (0.83), because the test molecules differ from much of the training data.
+  - Class imbalance, not model choice, was the real limit on stability performance.
+  - In hindsight, using public-leaderboard feedback to set the number of "low" predictions was a competition trick rather than modelling. That's why it's off by default in this repo.
