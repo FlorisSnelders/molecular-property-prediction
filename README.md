@@ -73,7 +73,7 @@ Python · RDKit · scikit-learn (ExtraTrees, MLP, K-means, PCA) · pandas · Num
 ## How to run
 
 ```bash
-git clone https://github.com/OssoFloris/molecular-property-prediction.git
+git clone https://github.com/FlorisSnelders/molecular-property-prediction.git
 cd molecular-property-prediction
 python -m venv .venv
 .venv\Scripts\activate            # Windows  (macOS/Linux: source .venv/bin/activate)
